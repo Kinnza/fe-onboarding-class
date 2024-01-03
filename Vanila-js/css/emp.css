@@ -1,0 +1,76 @@
+
+.table-container {
+    overflow-y: auto; 
+    height: 600px; 
+    margin: 30px;
+    border: 1px solid gray;
+}
+
+.emp-table {    
+    width: 100%;
+    font-size: 14px;
+    border-collapse: collapse; /* make the table borders collapse to each other */
+}
+
+.emp-table thead th {
+    padding: 5px;
+    line-height: 40px;
+    min-width: 50px;
+    text-align: left;
+    background-color: white;
+    position: sticky; /* make the table heads sticky */
+    top: 0px; /* table head will be placed from the top of the table and sticks to it */
+}
+
+.emp-table tbody tr {
+    border: none;
+}
+
+.emp-table tbody tr:nth-child(even)  {
+    background-color: aliceblue;
+}
+
+.emp-table tbody tr:nth-child(odd)  {
+    background-color: gainsboro;
+}
+
+.emp-table tbody tr td{
+    border: none;
+    padding: 5px;
+    text-align: left;
+}
+
+.emp-table tbody tr:hover{
+    background-color: dimgrey;
+    color: white;
+    cursor: pointer;
+}
+
+.id-container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+}
+
+.controllers-container {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+    
+.controllers-container button{
+    margin: 5px;
+    padding: 5px 15px;
+    height: 40px;
+    min-width: 60px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;    
+}
+
+.controllers-container button:hover {
+    border: 1px solid navy;
+    background-color: whitesmoke;
+}
