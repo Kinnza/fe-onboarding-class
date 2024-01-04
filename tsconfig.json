@@ -1,12 +1,11 @@
 {
-    "compilerOptions": {
-      //"module": "none",
-      "noImplicitAny": true,
-      "removeComments": true,
-      "preserveConstEnums": true,
-      "sourceMap": true,
-      "target": "es6",
-      "outDir": "./public/js",
-    },
-    "include": ["src/**/*"],
-  }
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "es6",
+    "outDir": "./public/js"
+  },
+  "include": ["src/**/*"]
+}
