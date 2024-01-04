@@ -1,5 +1,17 @@
+interface IEmployee {
+  id: number;
+  imageUrl: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  contactNumber: string;
+  age: number;
+  dob: string;
+  salary: number;
+  address: string;
+}
 
-const mock = [
+const mock: IEmployee[] = [
     {
       "id": 1001,
       "imageUrl": "https://hub.dummyapis.com/Image?text=CC&height=120&width=120",
@@ -1202,7 +1214,7 @@ const mock = [
     }
   ];
 
-var employees = [];
+var employees: IEmployee[] = [];
 var useMock = true;
 
 const fetchEmployees = () => {
@@ -1218,7 +1230,7 @@ const fetchEmployees = () => {
 
     return fetch('https://hub.dummyapis.com/employee?noofRecords=100&idStarts=1001')
         .then(response => response.json())
-        .then(data => {
+        .then( ( data :IEmployee[]) => {
             employees = data;
             return data;
         })
@@ -1257,7 +1269,7 @@ const buildEmployeesTable = () => {
         const address = document.createElement('td');
         const salary = document.createElement('td');
 
-        const idText = document.createTextNode(employee.id);
+        const idText = document.createTextNode(employee.id + '');
         const empImage = document.createElement('img');
         empImage.src = employee.imageUrl;
         empImage.width = 50;
@@ -1270,10 +1282,10 @@ const buildEmployeesTable = () => {
         name.innerText = employee.firstName + ' ' + employee.lastName;
         email.innerText = employee.email;
         phone.innerText = employee.contactNumber;
-        age.innerText = employee.age;
+        age.innerText = employee.age + '';
         dob.innerText = employee.dob;
         address.innerText = employee.address;
-        salary.innerText = employee.salary;
+        salary.innerText = employee.salary + '';
 
         tr.appendChild(id);
         tr.appendChild(name);
@@ -1304,7 +1316,7 @@ const init = () => {
     });
 
     document.getElementById('sort-table').addEventListener('click', () => {
-        employees.sort((a, b) => {
+        employees.sort((a: IEmployee, b: IEmployee) => {
             const nameA = a.firstName + ' ' + a.lastName;
             const nameB = b.firstName + ' ' + b.lastName;
             return nameA.localeCompare(nameB)
