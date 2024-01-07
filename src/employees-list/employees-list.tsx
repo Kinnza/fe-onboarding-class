@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import "./emp.css";
 import { IEmployee, employeesAPI } from "./employees-api";
-import {Controllers} from "./components/controllers";
-import {EmployeeTable} from "./components/employee-table";
 
 export const EmployeesList = ()=>{
     const [employees, setEmployees] = useState<IEmployee[]>([]);
@@ -37,18 +35,49 @@ export const EmployeesList = ()=>{
         loadData();
     },[loadData]);
 
-
     return (
         <>
-            <EmployeeTable
-                employees={employees}
-                isLoading={isLoading}
-                onEmpRowClicked={onEmpRowClicked}
-            />
-            <Controllers
-                onRefreshTable={onRefreshTable}
-                onSortTable={onSortTable}
-            />
+            <div className="table-container">
+                <table className="emp-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th> 
+                            <th>Name</th> 
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Age</th>
+                            <th>Date of birth</th>
+                            <th>Address</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            isLoading ? 'Loading...' :
+                            employees.map((emp)=>(
+                                <tr key={emp.id} onClick={()=>onEmpRowClicked(emp)}>
+                                    <td className="id-container"> 
+                                        {emp.id}
+                                        <img src={emp.imageUrl} width={50} height={50} alt=""></img>
+                                    </td>
+                                    <td>{emp.firstName + ' ' + emp.lastName}</td>
+                                    <td>{emp.email}</td>
+                                    <td>{emp.contactNumber}</td>
+                                    <td>{emp.age}</td>
+                                    <td>{emp.dob}</td>
+                                    <td>{emp.address}</td>
+                                    <td>{emp.salary}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>  
+            </div>
+            <div className="controllers-container">
+                <button onClick={()=>onRefreshTable()} >Refresh</button>
+                <button onClick={()=>onSortTable()} >Sort</button>
+            </div>
+
         </>
     );
 }
